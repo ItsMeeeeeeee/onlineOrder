@@ -1,11 +1,23 @@
 package com.project.onlineorder.entity;
 
-public class Customer {
+import javax.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "customers")
+public class Customer implements Serializable  {
+
+    private static final long serialVersionUID = 2652327633296064143L;
+
+    @Id
     private String email;
+
     private String firstName;
+
     private String lastName;
+
     private String password;
+
     private boolean enabled;
 
     public String getEmail() {
@@ -41,7 +53,7 @@ public class Customer {
     }
 
     public boolean isEnabled() {
-        return  enabled;
+        return enabled;
     }
 
     public void setEnabled(boolean enabled) {
