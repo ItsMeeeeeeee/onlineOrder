@@ -3,6 +3,9 @@ package com.project.onlineorder.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
 @Entity
 @Table(name = "customers")
 public class Customer implements Serializable  {
@@ -19,6 +22,10 @@ public class Customer implements Serializable  {
     private String password;
 
     private boolean enabled;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(unique = true)
+    private Cart cart;
 
     public String getEmail() {
         return email;
@@ -59,6 +66,13 @@ public class Customer implements Serializable  {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
-}
 
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+}
 
